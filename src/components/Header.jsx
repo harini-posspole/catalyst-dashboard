@@ -29,66 +29,75 @@ export const Header = ({
   onGoBack,                // ✅ NEW!
 }) => {
   // Styling for the entire header section
-  const headerStyle = {
-    display: 'flex',                    // Side-by-side layout
-    justifyContent: 'space-between',   // Title on left, buttons on right
-    alignItems: 'center',              // Vertically centered
-    marginBottom: spacing.xl,          // Space below header
-    flexWrap: 'wrap',                  // Wrap on mobile
-    gap: spacing.md,                   // Space between items
+    const headerStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: spacing.xl,
+    flexWrap: 'nowrap',               // ✅ Don't wrap
+    gap: spacing.md,
+    minWidth: '0',                    // ✅ Prevent overflow
   };
 
   // Title styling
-  const titleStyle = {
-    fontSize: fonts.sizes.xxxl,        // 40px - big!
-    fontWeight: 700,                   // Bold
-    color: '#ffffff',                  // White
-    margin: 0,                         // No default margins
-    letterSpacing: '0.5px',            // Slight space between letters
-    textTransform: 'uppercase',        // ALL CAPS
-  };// Logo styling
+    const titleStyle = {
+    fontSize: '32px',                 // ✅ Smaller (was 40px)
+    fontWeight: 700,
+    color: '#ffffff',
+    margin: 0,
+    letterSpacing: '0.5px',
+    textTransform: 'uppercase',
+    whiteSpace: 'nowrap',             // ✅ Don't wrap
+  };
+  // Logo styling
 const logoStyle = {
-  height: '50px',                     // Logo height
-  width: 'auto',                      // Auto width to maintain aspect ratio
-  marginRight: spacing.lg,            // Space to the right
-  cursor: 'pointer',                  // Hand cursor on hover
-  opacity: 0.9,                       // Slightly transparent
-  transition: 'all 0.3s',   
-  borderRadius: '8px',                    // ✅ ADD THIS (rounded corners)
-  border: '1px solid #e5e7eb',           // Smooth animation on hover
+  height: '40px',                     // ✅ Smaller
+  width: 'auto',
+  marginRight: spacing.md,            // ✅ Less margin
+  cursor: 'pointer',
+  opacity: 0.9,
+  transition: 'all 0.3s',
+  borderRadius: '8px',
+  border: '1px solid #e5e7eb',
 };
-  // Container for buttons on right
+    // Container for buttons on right
   const actionsStyle = {
-    display: 'flex',                   // Buttons in row
-    gap: spacing.md,                   // Space between buttons
-    alignItems: 'center',              // Vertically aligned
-    flexWrap: 'wrap',                  // Wrap on mobile
+    display: 'flex',
+    gap: spacing.md,
+    alignItems: 'center',
+    flexWrap: 'nowrap',               // ✅ Don't wrap
+    minWidth: '0',                     // ✅ Prevent flex overflow
+    overflow: 'hidden',                // ✅ Hide overflow
   };
 
   // Upload button styling
+    // Upload button styling
   const uploadButtonStyle = {
-    background: 'linear-gradient(135deg, #00D9FF 0%, #00BCD4 100%)',  // Cyan gradient
-    color: colors.background,          // Dark text
-    border: 'none',                    // No border
-    padding: '10px 20px',              // Padding inside button
-    borderRadius: '8px',               // Rounded corners
-    cursor: 'pointer',                 // Hand cursor on hover
-    fontWeight: 600,                   // Bold text
-    fontSize: fonts.sizes.sm,          // Small font
-    transition: 'all 0.3s',            // Smooth animation
+    background: 'linear-gradient(135deg, #00D9FF 0%, #00BCD4 100%)',
+    color: colors.background,
+    border: 'none',
+    padding: '8px 16px',               // ✅ Smaller padding
+    borderRadius: '8px',
+    cursor: 'pointer',
+    fontWeight: 600,
+    fontSize: '13px',                  // ✅ Smaller font
+    transition: 'all 0.3s',
+    whiteSpace: 'nowrap',              // ✅ Don't wrap text
   };
 
   // Status badge styling
+   // Status badge styling
   const badgeStyle = {
-    background: colors.cardBg,         // Dark background
-    color: colors.accent,              // Cyan text
-    padding: '8px 14px',               // Padding
-    borderRadius: '20px',              // Very rounded (pill shape)
-    fontSize: fonts.sizes.xs,          // Tiny font
-    fontWeight: 600,                   // Bold
-    border: `1px solid ${colors.accent}`,  // Cyan border
-    minWidth: '150px',                 // Minimum width
-    textAlign: 'center',               // Center text
+    background: colors.cardBg,
+    color: colors.accent,
+    padding: '6px 12px',              // ✅ Smaller padding
+    borderRadius: '20px',
+    fontSize: '11px',                 // ✅ Smaller font
+    fontWeight: 600,
+    border: `1px solid ${colors.accent}`,
+    minWidth: 'auto',                 // ✅ Auto width
+    textAlign: 'center',
+    whiteSpace: 'nowrap',             // ✅ Don't wrap
   };
 
   // Different colors for different status types
@@ -113,13 +122,15 @@ const logoStyle = {
     },
   };
 
-  // Clear Filters button styling
+
+    // Clear Filters button styling
   const clearButtonStyle = {
     ...uploadButtonStyle,
-    background: 'linear-gradient(135deg, #df1b2b 0%, #df1b2b 100%)',  // Red gradient
-    color: '#f7f7f7',                    // White text
-    opacity: isFiltering ? 1 : 0.5,    // Faded if no filters active
-    cursor: isFiltering ? 'pointer' : 'not-allowed',  // Change cursor
+    background: 'linear-gradient(135deg, #df1b2b 0%, #df1b2b 100%)',
+    color: '#f7f7f7',
+    opacity: isFiltering ? 1 : 0.5,
+    cursor: isFiltering ? 'pointer' : 'not-allowed',
+    whiteSpace: 'nowrap',             // ✅ Add this
   };
 
   // Input file element (hidden)
